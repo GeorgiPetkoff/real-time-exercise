@@ -6,7 +6,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DeviceComponent } from './components/device/device.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask'
-import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { StoreModule } from '@ngrx/store';
     MatTableModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
-    StoreModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
