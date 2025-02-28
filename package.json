@@ -20,7 +20,6 @@
     "@angular/platform-browser": "^14.3.0",
     "@angular/platform-browser-dynamic": "^14.3.0",
     "@angular/router": "^14.3.0",
-    "@ngrx/store": "^19.0.1",
     "express": "^4.21.2",
     "ngx-mask": "^14.3.3",
     "rxjs": "~7.4.0",
