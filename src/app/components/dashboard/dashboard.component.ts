@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { VehiclesRecognition } from 'src/app/models/vehicles-recognition';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 
@@ -10,15 +9,15 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['camera', 'timestamp', 'registrationNumber', 'vehicleType', 'brand', 'color', 'location'];
-  dataSource = new MatTableDataSource<VehiclesRecognition>();
+  dataSource = []
   constructor(private webSocketService: WebSocketService) {
   }
   ngOnInit(): void {
     this.webSocketService.getDataFromServer().subscribe((vehicleData) => {
       console.log('subscr');
       if(vehicleData){
-        this.dataSource.data.push(vehicleData);
-        this.dataSource._updateChangeSubscription();
+        // this.dataSource.data.push(vehicleData);
+        // this.dataSource._updateChangeSubscription();
       }
     });
   }
