@@ -3,9 +3,10 @@ import { VehiclesRecognition } from 'src/app/models/vehicles-recognition';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css'],
+    standalone: false
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['camera', 'timestamp', 'registrationNumber', 'vehicleType', 'brand', 'color', 'location'];
