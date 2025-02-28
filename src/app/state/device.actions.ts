@@ -3,22 +3,36 @@ import { Device } from '../models/device';
 
 export const addDevice = createAction(
   '[Device Page] Add Device',
-  props<{ content: string }>()
+  props<{ device: Device }>()
+);
+export const addDeviceSuccess = createAction(
+  '[Device API] Add Device Success',
+  props<{ device: Device }>()
 );
 
-export const removeTodo = createAction(
+export const addDeviceFailure = createAction(
+  '[Device API] Add Device Failure',
+  props<{ error: string }>()
+);
+
+export const removeDevice = createAction(
   '[Device Page] Remove Device',
   props<{ id: string }>()
 );
 
-export const loadTodos = createAction('[Todo Page] Load Todos');
-
-export const loadTodosSuccess = createAction(
-  '[Todo API] Todo Load Success',
-  props<{ todos: Device[] }>()
+export const editDevice = createAction(
+  '[Device Page] Edit Device',
+  props<{ device: Device }>()
 );
 
-export const loadTodosFailure = createAction(
-  '[Todo API] Todo Load Failure',
+export const loadDevices = createAction('[Device Page] Load Device');
+
+export const loadDevicesSuccess = createAction(
+  '[Device API] Device Load Success',
+  props<{ devices: Device[] }>()
+);
+
+export const loadDevicesFailure = createAction(
+  '[Device API] Device Load Failure',
   props<{ error: string }>()
 );

@@ -1,0 +1,38 @@
+input, .mat-mdc-select {
+  width: 90%;
+}
+.fa-triangle-exclamation {
+  color: red;
+  margin-left: 5px;
+}
+.input-border-error {
+  border: 2px solid red;
+}
+.button {
+  width: 130px;
+}
+
+.btn-only-icon {
+	min-width: auto !important;
+	font-size: 15px;
+}
+.btn-small {
+	font-size: 11px;
+	color: #2F323C;
+	background-color: #fff;
+	padding: 3px 8px 3px 8px;
+	line-height: 19px;
+	border: 1px solid rgba(197, 198, 200, 0.63);
+	border-color: rgba(197, 198, 200, 0.63) !important;
+	font-weight: 100;
+	box-shadow: none;
+	height: auto;
+	text-transform: capitalize;
+	text-decoration: none;
+	text-shadow: none;
+	text-align: left;
+	border-radius: 99px 99px 99px 99px !important;
+}
+.btn-only-icon i {
+	padding-right: 0px;
+}

@@ -1,0 +1,40 @@
+{
+  "devices": [
+    {
+      "id": "1",
+      "name": "Device 1",
+      "model": "QWE-123",
+      "serialNumber": "SN123456",
+      "ipAddress": "192.168.1.10",
+      "location": "Location-21",
+      "status": "Connected"
+    },
+    {
+      "id": "2",
+      "name": "123 edit1",
+      "model": "123",
+      "serialNumber": "123",
+      "ipAddress": "123.123.10.2",
+      "location": "123",
+      "status": "Disconnected"
+    },
+    {
+      "id": "4",
+      "name": "qwe",
+      "model": "qwe",
+      "serialNumber": "qwe",
+      "ipAddress": "123.213.123.1",
+      "location": "qwe",
+      "status": "Connected"
+    },
+    {
+      "id": "de63812a-430e-4b0e-aae0-947c98185703",
+      "name": "qwetest1 edit",
+      "model": "qwetest1",
+      "serialNumber": "qwetest1",
+      "ipAddress": "123.121.33.3",
+      "location": "213",
+      "status": "Connected"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 <button type="button" (click)="stopSubscription()">Stop Data</button>
-<table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="camera">
     <th mat-header-cell *matHeaderCellDef> Camera </th>
     <td mat-cell *matCellDef="let element">{{element.camera}}</td>

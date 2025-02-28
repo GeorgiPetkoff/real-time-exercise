@@ -1,1 +1,136 @@
-<input type="text" mask="IP">
+<div class="row px-0 mx-0 my-2">
+<form class="col-4 border" [formGroup]="deviceForm" (ngSubmit)="addEditDevice()">
+  <div class="row my-2 my-2">
+    <div class="col-4 text-end">
+      <label>Name:</label>
+    </div>
+    <div class="col-8">
+      <input type="text" formControlName="name" [ngClass]="deviceForm.get('name')?.hasError('required') && submitted ? 'input-border-error' : '' ">
+      <ng-container *ngIf="deviceForm.get('name')?.hasError('required') && submitted; then showRequiredError;"></ng-container>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-4 text-end">
+      <label>Model:</label>
+    </div>
+    <div class="col-8">
+      <input type="text" formControlName="model" [ngClass]="deviceForm.get('model')?.hasError('required') && submitted ? 'input-border-error' : '' ">
+      <ng-container *ngIf="deviceForm.get('model')?.hasError('required') && submitted; then showRequiredError"></ng-container>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-4 text-end">
+      <label>Serial Number:</label>
+    </div>
+    <div class="col-8">
+      <input type="text" formControlName="serialNumber" [ngClass]="deviceForm.get('serialNumber')?.hasError('required') && submitted ? 'input-border-error' : '' ">
+      <ng-container *ngIf="deviceForm.get('serialNumber')?.hasError('required') && submitted; then showRequiredError"></ng-container>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-4 text-end">
+      <label>IP Address:</label>
+    </div>
+    <div class="col-8">
+      <input type="text" mask="IP" [dropSpecialCharacters]="false" formControlName="ipAddress" [ngClass]="deviceForm.get('ipAddress')?.hasError('required') && submitted ? 'input-border-error' : '' ">
+      <ng-container *ngIf="deviceForm.get('ipAddress')?.hasError('required') && submitted; then showRequiredError"></ng-container>
+      <ng-container *ngIf="deviceForm.get('ipAddress')?.hasError('mask') && submitted; then showFormattedError;"></ng-container>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-4 text-end">
+      <label>Location:</label>
+    </div>
+    <div class="col-8">
+      <input type="text" formControlName="location" [ngClass]="deviceForm.get('location')?.hasError('required') && submitted ? 'input-border-error' : '' ">
+      <ng-container *ngIf="deviceForm.get('location')?.hasError('required') && submitted; then showRequiredError"></ng-container>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-4 text-end">
+      <label>Status:</label>
+    </div>
+    <div class="col-8">
+      <mat-select formControlName="status" [ngClass]="deviceForm.get('status')?.hasError('required') && submitted ? 'input-border-error' : '' ">
+        <mat-option *ngFor="let status of lstStatuses" [value]="status">
+          {{status}}
+        </mat-option>
+      </mat-select>
+      <ng-container *ngIf="deviceForm.get('status')?.hasError('required') && submitted; then showRequiredError"></ng-container>
+    </div>
+  </div>
+  <div class="row my-2 justify-content-center">
+    <button type="submit" class="button">{{deviceForm.get('id')?.value != '' ? 'Edit Device' : 'Add Device'}}</button>
+  </div>
+</form>
+<div class="col-8">
+  <div class="row">
+    <div class="col-2">
+      <b>Name</b>
+    </div>
+    <div class="col-2">
+      <b>Model</b>
+    </div>
+    <div class="col-2">
+      <b>Serial Number</b>
+    </div>
+    <div class="col-2">
+      <b>IP Address</b>
+    </div>
+    <div class="col-2">
+      <b>Location</b>
+    </div>
+    <div class="col-1">
+      <b>Status</b>
+    </div>
+    <div class="col-1">
+    </div>
+  </div>
+  <div class="row border" *ngFor="let device of allDevices$ | async">
+    <div class="col-2">
+      {{device.name}}
+    </div>
+    <div class="col-2">
+      {{device.model}}
+    </div>
+    <div class="col-2">
+      {{device.serialNumber}}
+    </div>
+    <div class="col-2">
+      {{device.ipAddress}}
+    </div>
+    <div class="col-2">
+      {{device.location}}
+    </div>
+    <div class="col-1">
+      {{device.status}}
+    </div>
+    <div class="col-1">
+      <button class="btn btn-small btn-only-icon" (click)="editDevice(device)"><i class="fa fa-cog"></i></button>
+      <button class="btn btn-small btn-only-icon" (click)="deleteDevice(device)"><i class="fa fa-times"></i></button>
+    </div>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-4">
+      <div class="row my-2">
+        <div class="col-4 text-end">
+          <label>Seacrh:</label>
+        </div>
+        <div class="col-8">
+          <input type="text" [formControl]="searchControl">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #showRequiredError>
+  <i class="fa fa-triangle-exclamation" matTooltip="Please Fill Required Field!" matTooltipPosition="right"
+    matTooltipClass="matTooltip"></i>
+</ng-template>
+<ng-template #showFormattedError>
+  <i class="fa fa-triangle-exclamation" matTooltip="Please Fill IP Address Field properly!" matTooltipPosition="right"
+    matTooltipClass="matTooltip"></i>
+</ng-template>
