@@ -12,7 +12,7 @@ export class WebSocketService {
   private socket$: WebSocketSubject<VehiclesRecognition>;
   
   constructor() {
-    this.socket$ = webSocket('ws://localhost:8080');
+    this.socket$ = webSocket('ws://localhost:8081');
    }
 
   public getDataFromServer(): Observable<VehiclesRecognition> {
