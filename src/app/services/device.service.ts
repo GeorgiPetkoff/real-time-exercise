@@ -11,11 +11,15 @@ export class DeviceService {
   constructor(private httpClient: HttpClient) { }
 
   getAllDevices(): Observable<Device[]>{
-    return this.httpClient.get<Device[]>('http://localhost:8080/devices');
+    return this.httpClient.get<Device[]>('http://localhost:8080/devices').pipe(
+      catchError(error => of((error)))
+    );
   }
   saveDevice(device: Device) {
     let jsonDevice = JSON.stringify(device);
-    return this.httpClient.post<Device>('http://localhost:8080/devices',jsonDevice);
+    return this.httpClient.post<Device>('http://localhost:8080/devices',jsonDevice).pipe(
+      catchError(error => of((error)))
+    );
   }
   editDevice(device: Device){
     let jsonDevice = JSON.stringify(device);

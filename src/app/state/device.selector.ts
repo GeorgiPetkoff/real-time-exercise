@@ -6,7 +6,7 @@ export interface deviceState {
   error: string | null;
   status: string;
 }
-
+// selectors is used to retrieve state from the global state, in this case to get all devices from the store
 export const selectDeviceFeature = createFeatureSelector<deviceState>('devices');
 
 export const selectAllDevices = createSelector(

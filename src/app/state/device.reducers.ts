@@ -3,6 +3,7 @@ import { deviceState } from './device.selector';
 import { addDevice, editDevice, loadDevices, loadDevicesFailure, loadDevicesSuccess, removeDevice } from './device.actions';
 import { Device } from '../models/device';
 
+// create default state
 export const initialState: deviceState = {
   devices: [],
   error: null,
@@ -11,6 +12,7 @@ export const initialState: deviceState = {
 
 export const deviceReducer = createReducer(
   initialState,
+  // when one action is dispatch, there are some interaction with the store like this first-to add one device to the global store
   on(addDevice, (state, { device }) => ({
     ...state,
     devices: [...state.devices, new Device(device.id,device.name,device.model,device.serialNumber,device.ipAddress,device.location,device.status)],

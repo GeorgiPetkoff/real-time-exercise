@@ -27,11 +27,12 @@ export class DeviceComponent implements OnInit {
 
   ngOnInit(): void {
     // this.store.dispatch(loadDevices());
-    this.initForm();
+    this.initForm(); 
+    // describe what the observable of value changes will do
     this.allDevices$ = this.searchControl.valueChanges.pipe(
-      startWith(''),
-      debounceTime(500),
-      distinctUntilChanged(),
+      startWith(''), // starting value of this observable, to return all devices
+      debounceTime(500), // waiting for 500ms after the value change. wait the user to stop typing to prevent overflowing api calls
+      distinctUntilChanged(), // this is used to return data only if data is changed changed
       switchMap(searchTerm => this.deviceService.getAllDevices().pipe(
         map(result => result.filter(device => 
           device.name.toLowerCase().includes(searchTerm?.toLowerCase() || '')
@@ -67,6 +68,7 @@ export class DeviceComponent implements OnInit {
 
   deleteDevice(device: Device){
     // this.store.dispatch(removeDevice({id: device.id}))
+    // this can be done with effect also, but decide to show ordinary api calls
     this.deviceService.deleteDevice(device.id).subscribe(
       result => {
         if(result){
@@ -78,7 +80,6 @@ export class DeviceComponent implements OnInit {
 
   addEditDevice(){
     this.submitted = true;
-    console.log('form',this.deviceForm.get('ipAddress')?.value)
     if(this.deviceForm.valid){
       let device: Device = this.deviceForm.getRawValue();
       if(device.id){
@@ -89,7 +90,6 @@ export class DeviceComponent implements OnInit {
             if(result){
               this.store.dispatch(loadDevices());
             }
-            // console.log('result')
           }
         )
       } else {

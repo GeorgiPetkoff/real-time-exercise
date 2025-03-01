@@ -1,6 +1,7 @@
-const WebSocket = require('ws');
+const WebSocket = require('ws'); // load module WebSocket
 const wss = new WebSocket.Server({ port: 8080 }); // Set the port to 8080
  
+// function to generate random data
 function generateRandomVehicleData() {
   return {
     camera: crypto.randomUUID(),
@@ -15,6 +16,7 @@ function generateRandomVehicleData() {
 
 wss.on('connection', ws => {
   console.log('Connected')
+  // when a connection is established, setting an interval of 3000 ms to send real-time data
   const vehicleDataInterval = setInterval(() => {
     const vehicleData = generateRandomVehicleData();
     ws.send(JSON.stringify(vehicleData));

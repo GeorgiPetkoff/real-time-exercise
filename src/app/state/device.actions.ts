@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Device } from '../models/device';
 
+// Decribe all actions which are dispatched by component
 export const addDevice = createAction(
   '[Device Page] Add Device',
   props<{ device: Device }>()

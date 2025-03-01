@@ -16,8 +16,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(private webSocketService: WebSocketService) {
   }
   ngOnInit(): void {
+    this.startSubscription();
+  }
+  startSubscription(){
     this.webSocketService.getDataFromServer().subscribe((vehicleData) => {
-      console.log('subscr');
       if(vehicleData){
         this.dataSource.data.push(vehicleData);
         this.dataSource._updateChangeSubscription();
@@ -30,6 +32,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    console.log('On destroy stop')
     this.webSocketService.closeConnection();
   }
   

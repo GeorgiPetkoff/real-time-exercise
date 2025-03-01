@@ -1,2 +1,4 @@
-<!-- <app-dashboard></app-dashboard> -->
- <app-device></app-device>
+<button (click)="showComponents=!showComponents">{{showComponents ? "Show Dashboard" : "Show Devices"}}</button>
+
+<app-dashboard *ngIf="showComponents"></app-dashboard>
+ <app-device *ngIf="!showComponents"></app-device>
